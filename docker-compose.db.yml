@@ -1,0 +1,23 @@
+version: "3.9"   # Version của docker-compose (ổn định)
+
+services:
+  postgres:
+    image: postgres:16        # Phiên bản Postgres
+    container_name: postgres_db
+
+    ports:
+      - "5432:5432"           # Map port: localhost:5432 → container:5432
+
+    environment:
+      POSTGRES_DB: moment_to_network   # Database sẽ được tạo khi container chạy lần đầu
+      POSTGRES_USER: admin          # User đăng nhập
+      POSTGRES_PASSWORD: admin123   # Mật khẩu user
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Volume để lưu data → restart / remove container KHÔNG mất DB
+
+    restart: unless-stopped  # Tự chạy lại khi Docker restart
+
+volumes:
+  pgdata:                     # Named volume (Docker quản lý)

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",            /* Thư mục chứa file JS sau khi build */
+    "rootDir": "./src",             /* Thư mục chứa file TS nguồn */
+    "strict": true,                 /* Bật kiểm tra kiểu nghiêm ngặt */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],          /* Build tất cả file trong src */
+  "exclude": ["node_modules"]       /* Loại bỏ node_modules */
+}

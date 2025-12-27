@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+build/
+.next/
+out/
+
+# Environment variables (CỰC KỲ QUAN TRỌNG)
+.env
+.env.local
+.env.production
+# CHỈ giữ lại file .env.example để làm mẫu
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+
+# OS files
+.DS_Store
