@@ -1,7 +1,9 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 export default function ProfilePage() {
-    return (
-        <div>
-            Profile page
-        </div>
-    );
+  const pathname = usePathname();
+
+  return <div>Profile page {pathname} </div>;
 }
