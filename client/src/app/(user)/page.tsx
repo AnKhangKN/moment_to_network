@@ -1,4 +1,4 @@
-import PostComponent from "@/components/ui/user/post/PostComponent/PostComponent";
+import PostComponent from "@/components/ui/user/PostComponent/PostComponent";
 import PostCreateComponent from "@/components/ui/user/PostCreateComponent/PostCreateComponent";
 import { Post } from "@/types";
 
@@ -6,18 +6,7 @@ export default function HomePage() {
   const postList: Post[] = [
     {
       post_id: "1",
-      caption: "Bài viết không có ảnh video và file",
-
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
+      caption: "Hello @khang #react @haha",
       caption_bg: "bg-blue-400",
 
       emotion: "",
@@ -30,18 +19,15 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
-      group: {
-        group_id: "1",
-        group_name: "Nhóm công nghệ",
-        group_avatar: "",
-      },
+      group: null,
+
       share: null,
       hearts_count: 2,
       comments_count: 2,
-      shares_count: 2,
+      shares_count: 10,
 
       hearts: [{ user_id: "1" }, { user_id: "2" }],
 
@@ -54,20 +40,8 @@ export default function HomePage() {
     },
     {
       post_id: "2",
-      caption: "Bài viết có 1 media",
-
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
-
+      caption: "Bài viết #react có 1 media @media",
+      caption_bg: "",
       emotion: "",
 
       medias: [
@@ -90,7 +64,7 @@ export default function HomePage() {
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
       share: null,
       hearts_count: 2,
@@ -110,17 +84,7 @@ export default function HomePage() {
       post_id: "3",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
@@ -143,13 +107,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
       share: null,
 
@@ -170,17 +134,7 @@ export default function HomePage() {
       post_id: "4",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
@@ -208,13 +162,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
       share: null,
 
@@ -235,17 +189,7 @@ export default function HomePage() {
       post_id: "5",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
@@ -278,13 +222,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
 
       share: null,
@@ -306,17 +250,7 @@ export default function HomePage() {
       post_id: "6",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
@@ -359,13 +293,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
 
       share: null,
@@ -387,52 +321,11 @@ export default function HomePage() {
       post_id: "7",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
-      medias: [
-        {
-          media_id: "1",
-          type: "video",
-          media_link: "/assets/videos/video_doc.mp4",
-        },
-        {
-          media_id: "2",
-          type: "video",
-          media_link: "/assets/videos/video_vuong.mp4",
-        },
-        {
-          media_id: "3",
-          type: "video",
-          media_link: "/assets/videos/video_ngang.mp4",
-        },
-        {
-          media_id: "4",
-          type: "video",
-          media_link: "/assets/videos/video_ngang.mp4",
-        },
-        {
-          media_id: "5",
-          type: "image",
-          media_link: "/assets/images/anh_doc.jpg",
-        },
-        {
-          media_id: "6",
-          type: "image",
-          media_link: "/assets/images/anh_ngang.webp",
-        },
-      ],
+      medias: [],
       files: [],
 
       author: {
@@ -440,13 +333,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
 
       share: null,
@@ -468,17 +361,7 @@ export default function HomePage() {
       post_id: "8",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
@@ -496,13 +379,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
       share: null,
 
@@ -523,16 +406,6 @@ export default function HomePage() {
       post_id: "9",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
       caption_bg: "",
 
       emotion: "",
@@ -545,7 +418,7 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: null,
@@ -554,13 +427,21 @@ export default function HomePage() {
         post_id: "1",
         caption: "hihi",
 
-        hashtag: [],
-        user_tag: [],
-
         caption_bg: "",
         emotion: "",
 
-        medias: [],
+        medias: [
+          {
+            media_id: "1",
+            type: "video",
+            media_link: "/assets/videos/video_doc.mp4",
+          },
+          {
+            media_id: "2",
+            type: "video",
+            media_link: "/assets/videos/video_doc.mp4",
+          },
+        ],
         files: [],
 
         author: {
@@ -568,7 +449,7 @@ export default function HomePage() {
           first_name: "Khang",
           last_name: "Phan",
           user_name: "khang phan",
-          user_avatar: "",
+          user_avatar: "/assets/images/user_avatar.webp",
         },
         group: null,
 
@@ -597,17 +478,7 @@ export default function HomePage() {
       post_id: "10",
       caption: "Bài viết có 2 media",
 
-      hashtag: ["haha", "xinchao"],
-      user_tag: [
-        {
-          user_id: "1",
-          last_name: "phan",
-          first_name: "khang",
-          user_name: "khangphan",
-        },
-      ],
-
-      caption_bg: "bg-blue-400",
+      caption_bg: "",
 
       emotion: "",
 
@@ -625,13 +496,13 @@ export default function HomePage() {
         first_name: "Khang",
         last_name: "Phan",
         user_name: "khang phan",
-        user_avatar: "",
+        user_avatar: "/assets/images/user_avatar.webp",
       },
 
       group: {
         group_id: "1",
         group_name: "Nhóm công nghệ",
-        group_avatar: "",
+        group_avatar: "/assets/images/group_avatar.webp",
       },
       share: null,
 

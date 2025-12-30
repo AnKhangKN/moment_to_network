@@ -1,8 +1,29 @@
-export interface UserTag {
+export interface MentionEntity {
   user_id: string;
-  first_name: string;
-  last_name: string;
-  user_name: string;
+  start: number;
+  length: number;
+}
+
+export interface HashtagEntity {
+  tag: string;
+  start: number;
+  length: number;
+}
+
+export interface CaptionEntities {
+  mentions: MentionEntity[];
+  hashtags: HashtagEntity[];
+}
+
+export interface Media {
+  media_id: string;
+  type: "image" | "video";
+  media_link: string;
+}
+
+export interface File {
+  file_id: string;
+  file_link: string;
 }
 
 export interface Author {
@@ -19,24 +40,9 @@ export interface Group {
   group_avatar: string;
 }
 
-export interface Media {
-  media_id: string;
-  type: "image" | "video";
-  media_link: string;
-}
-
-export interface File {
-  file_id: string;
-  type: "file";
-  file_link: string;
-}
-
 export interface Share {
   post_id: string;
   caption: string;
-
-  hashtag: string[];
-  user_tag: UserTag[];
 
   caption_bg?: string;
   emotion?: string;
@@ -49,22 +55,15 @@ export interface Share {
 
   privacy: "public" | "friends" | "private";
   status: "active" | "hidden" | "deleted";
-  post_type: "post" | "share" | "repost";
+  post_type: "post" | "share" | "report";
 
   createdAt: string;
   updatedAt: string;
 }
 
-export interface Heart {
-  user_id: string;
-}
-
 export interface Post {
   post_id: string;
   caption: string;
-
-  hashtag: string[];
-  user_tag: UserTag[];
 
   caption_bg?: string;
   emotion?: string;
@@ -81,11 +80,11 @@ export interface Post {
   comments_count: number;
   shares_count: number;
 
-  hearts: Heart[];
+  hearts: { user_id: string }[];
 
   privacy: "public" | "friends" | "private";
   status: "active" | "hidden" | "deleted";
-  post_type: "post" | "share" | "repost";
+  post_type: "post" | "share" | "report";
 
   createdAt: string;
   updatedAt: string;
