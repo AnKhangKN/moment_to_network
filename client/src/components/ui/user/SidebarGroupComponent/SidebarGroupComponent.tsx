@@ -4,130 +4,175 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   PiArrowLeftLight,
+  PiCompassFill,
   PiCompassLight,
+  PiCopySimpleFill,
   PiCopySimpleLight,
   PiGearSixFill,
+  PiMagnifyingGlass,
+  PiPlusLight,
+  PiUsersFill,
+  PiUsersLight,
 } from "react-icons/pi";
+import GroupSection from "./GoupSection/GroupSection";
+import MyGroupSection from "./MyGroupSection/MyGroupSection";
+import { Group } from "./group.type";
+
+interface GroupNavigation {
+  name: string;
+  link: string;
+  icon: (active: boolean) => React.ReactNode;
+}
 
 export default function SidebarGroupComponent() {
+  const myGroupList: Group[] = [
+    {
+      group_id: "mygroup1",
+      group_name: "Nhóm của tôi",
+      group_avatar: "/assets/images/group_avatar.webp",
+      created_at: "22 giờ trước",
+    },
+    {
+      group_id: "mygroup2",
+      group_name: "Nhóm của tôi 2",
+      group_avatar: "/assets/images/group_avatar.webp",
+      created_at: "22 giờ trước",
+    },
+  ];
+
+  const groupList: Group[] = [
+    {
+      group_id: "group1",
+      group_name: "Nhóm tôi tham gia",
+      group_avatar: "/assets/images/group_avatar.webp",
+      created_at: "22 giờ trước",
+    },
+    {
+      group_id: "group2",
+      group_name: "Nhóm tôi tham gia 2",
+      group_avatar: "/assets/images/group_avatar.webp",
+      created_at: "22 giờ trước",
+    },
+    {
+      group_id: "group3",
+      group_name: "Nhóm tôi tham gia 3",
+      group_avatar: "/assets/images/group_avatar.webp",
+      created_at: "22 giờ trước",
+    },
+    {
+      group_id: "group4",
+      group_name: "Nhóm tôi tham gia 4",
+      group_avatar: "/assets/images/group_avatar.webp",
+      created_at: "22 giờ trước",
+    },
+  ];
   const pathname = usePathname();
+
+  const groupNavigation: GroupNavigation[] = [
+    {
+      name: "Bảng tin",
+      link: "/group/feed",
+      icon: (active) =>
+        active ? (
+          <PiCopySimpleFill size={24} />
+        ) : (
+          <PiCopySimpleLight size={24} />
+        ),
+    },
+    {
+      name: "Khám phá",
+      link: "/group/explore",
+      icon: (active) =>
+        active ? <PiCompassFill size={24} /> : <PiCompassLight size={24} />,
+    },
+    {
+      name: "Nhóm của tôi",
+      link: "/group/my-groups",
+      icon: (active) =>
+        active ? <PiUsersFill size={24} /> : <PiUsersLight size={24} />,
+    },
+  ];
+
+  if (!pathname.startsWith("/group")) return null;
+
+  const isGroupActive =
+    pathname.startsWith("/group/feed") ||
+    pathname.startsWith("/group/explore") ||
+    pathname.startsWith("/group/my-groups");
 
   return (
     <aside
-      className={`${
-        pathname.startsWith("/group")
-          ? "md:block h-screen transition-all duration-300 ease-in-out lg:w-80 w-22 hidden z-10 shadow p-4"
-          : "hidden"
-      }`}
+      className={`hidden ${
+        isGroupActive ? "md:block" : "hidden"
+      } h-screen lg:w-80 w-26 p-4 z-10 shadow overflow-hidden transition-all duration-300`}
     >
       <div className="flex flex-col space-y-2">
+        {/* Header */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-2">
             <Link
-              className="cursor-pointer hover:bg-gray-200 rounded-full p-2"
               href="/"
+              className="p-2 rounded-full hover:bg-gray-200 cursor-pointer"
             >
               <PiArrowLeftLight size={22} />
             </Link>
-
-            <h2 className="font-bold text-xl">Nhóm</h2>
+            <h2 className="hidden lg:block font-bold text-xl">Nhóm</h2>
           </div>
 
-          <div className={`p-2 cursor-pointer hover:bg-gray-200 rounded-full`}>
+          <button className="hidden lg:block p-2 rounded-full hover:bg-gray-200">
             <PiGearSixFill size={24} />
-          </div>
+          </button>
         </div>
 
-        <div className="px-4 py-2.5 bg-gray-200 rounded-full">
-          Tìm kiếm nhóm
+        {/* Search */}
+        <div className="flex items-center justify-center gap-3 py-3.5 lg:px-4 bg-gray-200 rounded-full">
+          <PiMagnifyingGlass size={24} />
+          <span className="hidden lg:block whitespace-nowrap">
+            Tìm kiếm nhóm
+          </span>
         </div>
 
-        <div className="flex flex-col">
-          <div>
-            <PiCopySimpleLight size={22} />
-            <span> Bảng tin</span>
+        {/* Content */}
+        <div className="flex flex-col overflow-y-auto h-[calc(100vh-125px)] py-2">
+          {/* Navigation */}
+          <div className="flex flex-col py-4 space-y-1">
+            {groupNavigation.map((item) => {
+              const isActive = pathname.startsWith(item.link);
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.link}
+                  className={`flex items-center gap-4 p-4 rounded-lg cursor-pointer ${
+                    isActive ? "bg-gray-200" : "hover:bg-gray-100 text-gray-700"
+                  }`}
+                >
+                  {item.icon(isActive)}
+                  <span className="hidden lg:block whitespace-nowrap">
+                    {item.name}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
-          <div>
-            <PiCompassLight size={22} />
-            <span> Khám phá</span>
-          </div>
+          {/* Create Group */}
+          <button className="flex items-center gap-4 px-4 py-3.5 rounded-lg bg-gray-200 hover:bg-gray-300 lg:justify-center">
+            <PiPlusLight size={24} />
+            <span className="hidden lg:block whitespace-nowrap">
+              Tạo nhóm mới
+            </span>
+          </button>
 
-          <div>Nhóm của tôi</div>
-        </div>
+          <hr className="my-4 text-gray-300" />
 
-        <button className="px-4 py-2.5 bg-gray-200 rounded-lg">
-          Tạo nhóm mới
-        </button>
+          {/* Managed Groups */}
+          <MyGroupSection group={myGroupList} />
 
-        <hr />
+          <hr className="my-4 text-gray-300" />
 
-        <div className="flex flex-col space-y-4">
-          <div className="flex items-center justify-between">
-            <span>Nhóm bạn quản lý</span>
-            <button className="hover:underline cursor-pointer text-indigo-500">
-              Xem tất cả
-            </button>
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gray-400 rounded-lg"></div>
-
-              <div className="flex flex-col">
-                <span>Nhóm của tôi</span>
-                <span className="text-gray-400 text-[12px]">
-                  Đã tạo: 22 giờ trước
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gray-400 rounded-lg"></div>
-
-              <div className="flex flex-col">
-                <span>Nhóm của tôi</span>
-                <span className="text-gray-400 text-[12px]">
-                  Đã tạo: 22 giờ trước
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr />
-
-        <div className="flex flex-col space-y-4">
-          <div className="flex items-center justify-between">
-            <span>Nhóm bạn tham gia</span>
-            <button className="hover:underline cursor-pointer text-indigo-500">
-              Xem tất cả
-            </button>
-          </div>
-
-          <div className="flex flex-col space-y-2">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gray-400 rounded-lg"></div>
-
-              <div className="flex flex-col">
-                <span>Nhóm của tôi</span>
-                <span className="text-gray-400 text-[12px]">
-                  Đã tạo: 22 giờ trước
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gray-400 rounded-lg"></div>
-
-              <div className="flex flex-col">
-                <span>Nhóm của tôi</span>
-                <span className="text-gray-400 text-[12px]">
-                  Đã tạo: 22 giờ trước
-                </span>
-              </div>
-            </div>
-          </div>
+          {/* Joined Groups */}
+          <GroupSection group={groupList} />
         </div>
       </div>
     </aside>
